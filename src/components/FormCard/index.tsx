@@ -17,6 +17,14 @@ function FormCard({ movieId }: Props) {
 
     const [movie, setMovie] = useState<Movie>();
 
+    const now = new Date();
+    const current = now.getDate() + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
+    const current1 = now.getDate()+1 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
+    const current2 = now.getDate()+2 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
+    const current3 = now.getDate()+3 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
+    const current4 = now.getDate()+4 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
+
+
     useEffect(() => {
         axios.get(`${BASE_URL}/movies/${movieId}`)
             .then(response => {
@@ -59,17 +67,25 @@ function FormCard({ movieId }: Props) {
                         <input type="email" className="form-control" id="email" />
                     </div>
                     <div className="form-group ingressofacil-form-group">
-                        <label htmlFor="score">Informe sua avaliação</label>
+                        <label htmlFor="score">Informe data</label>
                         <select className="form-control" id="score">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option>{current}</option>
+                            <option>{current1}</option>
+                            <option>{current2}</option>
+                            <option>{current3}</option>
+                            <option>{current4}</option>
                         </select>
                     </div>
+                    <div className="form-group ingressofacil-form-group">
+                        <label htmlFor="score">Informe nome completo</label>
+                        <input type="nome" className="form-control" id="nome" />
+                    </div>
+                    <div className="form-group ingressofacil-form-group">
+                        <label htmlFor="score">Informe o número do cartão de crédito</label>
+                        <input type="numcartao" className="form-control" id="numcartao" />
+                    </div>
                     <div className="ingressofacil-form-btn-container">
-                        <button type="submit" className="btn btn-primary ingressofacil-btn">Salvar</button>
+                        <button type="submit" className="btn btn-primary ingressofacil-btn">Finalizar pedido</button>
                     </div>
                 </form >
                 <Link to="/">

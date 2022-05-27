@@ -13,10 +13,9 @@ function MovieCard( {movie} : Props ) {
             <img className="ingressofacil-movie-card-image" src={movie.image} alt={movie.title} />
             <div className="ingressofacil-card-bottom-container">
                 <h3>{movie.title}</h3>
-                <MovieScore count={movie.count} score={movie.score}/>
 
                 <Link to={`/form/${movie.id}`}>
-                    <div className="btn btn-primary ingressofacil-btn">Avaliar</div>
+                    <div className="btn btn-primary ingressofacil-btn">Comprar</div>
                 </Link>
             </div>
         </div>
