@@ -77,15 +77,27 @@ function FormCard({ movieId }: Props) {
                         </select>
                     </div>
                     <div className="form-group ingressofacil-form-group">
-                        <label htmlFor="score">Informe nome completo</label>
+                        <label htmlFor="score">Nome completo</label>
                         <input type="nome" className="form-control" id="nome" />
                     </div>
                     <div className="form-group ingressofacil-form-group">
-                        <label htmlFor="score">Informe o número do cartão de crédito</label>
+                        <label htmlFor="cpf">CPF</label>
+                        <input type="cpf" className="form-control" id="cpf" />
+                    </div>
+                    <div className="form-group ingressofacil-form-group">
+                        <label htmlFor="score">Número do cartão de crédito</label>
                         <input type="numcartao" className="form-control" id="numcartao" />
                     </div>
+                    <div className="form-group ingressofacil-form-group">
+                        <label htmlFor="codseguranca">Código de Segurança</label>
+                        <input type="codseguranca" className="form-control" id="codseguranca" />
+                    </div>
+                    <div className="form-group ingressofacil-form-group">
+                        <label htmlFor="score">Validade</label>
+                        <input type="validade" className="form-control" id="validade" />
+                    </div>
                     <div className="ingressofacil-form-btn-container">
-                        <button type="submit" className="btn btn-primary ingressofacil-btn">Finalizar pedido</button>
+                        <button type="submit" className="btn btn-primary ingressofacil-btn">Finalizar compra</button>
                     </div>
                 </form >
                 <Link to="/">
