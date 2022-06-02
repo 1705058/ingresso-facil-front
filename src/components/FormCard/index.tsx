@@ -36,7 +36,13 @@ function FormCard({ movieId }: Props) {
         event.preventDefault();
 
         const email = (event.target as any).email.value;
-        const score = (event.target as any).score.value;
+        const dataHora = (event.target as any).dataHora.value;
+        // const score = (event.target as any).score.value;
+        // const score = (event.target as any).score.value;
+        // const score = (event.target as any).score.value;
+        // const score = (event.target as any).score.value;
+        // const score = (event.target as any).score.value;
+        // const score = (event.target as any).score.value;
 
         if (!validateEmail(email)) {
             return;
@@ -44,15 +50,15 @@ function FormCard({ movieId }: Props) {
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: 'PUT',
-            url: '/scores',
+            url: '/purchases',
             data: {
-                email: email,
                 movieId: movieId,
-                score: score
+                email: email,
+                dataHora: dataHora
             }
         }
         axios(config).then(response => {
-            navigate("/");
+            navigate("/finished");
         });
     }
 
@@ -67,8 +73,8 @@ function FormCard({ movieId }: Props) {
                         <input type="email" className="form-control" id="email" />
                     </div>
                     <div className="form-group ingressofacil-form-group">
-                        <label htmlFor="score">Informe data</label>
-                        <select className="form-control" id="score">
+                        <label htmlFor="dataHora">Informe data e horário</label>
+                        <select className="form-control" id="dataHora">
                             <option>{current}</option>
                             <option>{current1}</option>
                             <option>{current2}</option>
