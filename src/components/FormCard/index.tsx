@@ -18,11 +18,12 @@ function FormCard({ movieId }: Props) {
     const [movie, setMovie] = useState<Movie>();
 
     const now = new Date();
-    const current = now.getDate() + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
-    const current1 = now.getDate()+1 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
-    const current2 = now.getDate()+2 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
-    const current3 = now.getDate()+3 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
-    const current4 = now.getDate()+4 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ' ' + 'h';
+    
+    const current0 = now.getDate()+1 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ':00';
+    const current1 = now.getDate()+2 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ':00';
+    const current2 = now.getDate()+3 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ':00';
+    const current3 = now.getDate()+4 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ':00';
+    const current4 = now.getDate()+5 + '/' + now.getMonth() + '/' + now.getFullYear() + ' - ' + now.getHours() + ':00';
 
 
     useEffect(() => {
@@ -37,16 +38,16 @@ function FormCard({ movieId }: Props) {
 
         const email = (event.target as any).email.value;
         const dataHora = (event.target as any).dataHora.value;
-        // const score = (event.target as any).score.value;
-        // const score = (event.target as any).score.value;
-        // const score = (event.target as any).score.value;
-        // const score = (event.target as any).score.value;
-        // const score = (event.target as any).score.value;
-        // const score = (event.target as any).score.value;
+        const nome = (event.target as any).nome.value;
+        const cartaoCredito = (event.target as any).cartaoCredito.value;
+        const cpf = (event.target as any).cpf.value;
+        const codigoDeSeguranca = (event.target as any).codigoDeSeguranca.value;
+        const validade = (event.target as any).validade.value;
 
         if (!validateEmail(email)) {
             return;
         }
+
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: 'PUT',
@@ -54,7 +55,12 @@ function FormCard({ movieId }: Props) {
             data: {
                 movieId: movieId,
                 email: email,
-                dataHora: dataHora
+                dataHora: dataHora,
+                nome: nome,
+                cartaoCredito: cartaoCredito,
+                cpf: cpf,
+                codigoDeSeguranca: codigoDeSeguranca,
+                validade: validade
             }
         }
         axios(config).then(response => {
@@ -75,7 +81,7 @@ function FormCard({ movieId }: Props) {
                     <div className="form-group ingressofacil-form-group">
                         <label htmlFor="dataHora">Informe data e horário</label>
                         <select className="form-control" id="dataHora">
-                            <option>{current}</option>
+                            <option>{current0}</option>
                             <option>{current1}</option>
                             <option>{current2}</option>
                             <option>{current3}</option>
@@ -83,7 +89,7 @@ function FormCard({ movieId }: Props) {
                         </select>
                     </div>
                     <div className="form-group ingressofacil-form-group">
-                        <label htmlFor="score">Nome completo</label>
+                        <label htmlFor="nome">Nome completo</label>
                         <input type="nome" className="form-control" id="nome" />
                     </div>
                     <div className="form-group ingressofacil-form-group">
@@ -91,15 +97,15 @@ function FormCard({ movieId }: Props) {
                         <input type="cpf" className="form-control" id="cpf" />
                     </div>
                     <div className="form-group ingressofacil-form-group">
-                        <label htmlFor="score">Número do cartão de crédito</label>
-                        <input type="numcartao" className="form-control" id="numcartao" />
+                        <label htmlFor="cartaoCredito">Número do cartão de crédito</label>
+                        <input type="cartaoCredito" className="form-control" id="cartaoCredito" />
                     </div>
                     <div className="form-group ingressofacil-form-group">
-                        <label htmlFor="codseguranca">Código de Segurança</label>
-                        <input type="codseguranca" className="form-control" id="codseguranca" />
+                        <label htmlFor="codigoDeSeguranca">Código de Segurança</label>
+                        <input type="codigoDeSeguranca" className="form-control" id="codigoDeSeguranca" />
                     </div>
                     <div className="form-group ingressofacil-form-group">
-                        <label htmlFor="score">Validade</label>
+                        <label htmlFor="validade">Validade</label>
                         <input type="validade" className="form-control" id="validade" />
                     </div>
                     <div className="ingressofacil-form-btn-container">
