@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingresso-front
+  labels:
+    app: ingresso-front
+spec:
+  selector:
+    matchLabels:
+      app: ingresso-front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ingresso-front
+    spec:
+      containers:
+        - name: ingresso-front
+          image: ingresso/ingresso-front:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          # env:
+          #   - name: REACT_APP_BACKEND_URL
+          #     value: http://172.17.0.5:8080
