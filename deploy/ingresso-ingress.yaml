@@ -19,6 +19,6 @@ spec:
           pathType: Prefix
           backend:
             service: 
-              name: ingresso-api-service
+              name: ingresso-api
               port: 
                 number: 8080
