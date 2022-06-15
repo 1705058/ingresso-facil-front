@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: ingresso-front
-  replicas: 1
+  replicas: 
   template:
     metadata:
       labels:
@@ -20,3 +20,38 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512M
+            limits:
+              cpu: 700m
+              memory: 700M
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ingresso-front-autoscaler
+  namespace: default
+  labels:
+    label: ingresso-front
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ingresso-front
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource: 
+      name: cpu
+      target:
+       type: Utilization
+       averageUtilization: 30
+  - type: Resource
+    resource: 
+      name: memory
+      target:
+       type: Utilization
+       averageUtilization: 30
