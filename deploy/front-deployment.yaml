@@ -22,11 +22,11 @@ spec:
             - containerPort: 80
           resources:
             requests:
-              cpu: 500m
-              memory: 512M
+              cpu: 300m
+              memory: 256M
             limits:
-              cpu: 700m
-              memory: 700M
+              cpu: 400m
+              memory: 300M
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -41,7 +41,7 @@ spec:
     kind: Deployment
     name: ingresso-front
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 4
   metrics:
   - type: Resource
     resource: 
